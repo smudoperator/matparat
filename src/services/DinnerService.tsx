@@ -1,7 +1,7 @@
 // src/services/apiService.tsx
 
 import axios from 'axios';
-import { Dinner } from '../types/interfaces';
+import { CreateDinner, Dinner } from '../types/interfaces';
 
 
 const API_BASE_URL = 'https://matpirat-dsgpfqc9fbhnf2hq.northeurope-01.azurewebsites.net';
@@ -17,15 +17,15 @@ const apiService = {
     },
 
   getDinnerById: async (id: string): Promise<Dinner> => {
-    const response = await axios.post(`${API_BASE_URL}/Dinner/GetDinner`, { id })
+    const response = await axios.post(`${API_BASE_URL}/Dinner/GetDinner?id=${id}`)
         .catch(function (error) {
             throw error.response ? error.response.data : new Error(`Network error`);
         });
     return response.data;
   },
 
-  addDinner: async (dinner: Dinner) => {
-    const { name, description, type, meatType, skillLevel, ingredients, tags, image } = dinner;
+  addDinner: async (dinner: CreateDinner) => {
+    const { name, description, type, meatType, skillLevel, ingredients, tags, imageData } = dinner;
     const response = await axios.post(`${API_BASE_URL}/Dinner/AddDinner`, { 
       name, 
       description, 
@@ -34,7 +34,7 @@ const apiService = {
       skillLevel, 
       ingredients, 
       tags, 
-      imageData: image
+      imageData
      } ) 
         .catch( function (error) {
             throw error.response ? error.response.data : new Error(`Network error`);
@@ -52,7 +52,7 @@ const apiService = {
   },
 
   deleteDinner: async (id: string) => {
-    const response = await axios.post(`${API_BASE_URL}/Dinner/DeleteDinner`, { id })
+    const response = await axios.post(`${API_BASE_URL}/Dinner/DeleteDinner?id=${id}`)
         .catch (function (error) {
             throw error.response ? error.response.data : new Error(`Network error`);
         });

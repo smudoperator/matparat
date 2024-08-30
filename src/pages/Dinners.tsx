@@ -1,6 +1,7 @@
 // src/pages/Dinners.tsx
 
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import dinnerService from '../services/DinnerService'; // Adjust the path if needed
 import { Dinner } from '../types/interfaces';
 import styles from './Dinners.module.css';
@@ -11,15 +12,18 @@ const Dinners = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const [showIdColumn, setShowIdColumn] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchDinners = async () => {
             try {
                 const fetchedDinners = await dinnerService.getDinners();
                 setDinners(fetchedDinners);
-            } catch (err) {
+            } 
+            catch (err) {
                 setError('Failed to fetch dinners.');
-            } finally {
+            } 
+            finally {
                 setLoading(false);
             }
         };
@@ -30,6 +34,23 @@ const Dinners = () => {
     const handleToggleColumn = () => {
       setShowIdColumn(!showIdColumn);
     };
+
+    const editDinner = (id: string) => {
+      navigate(`/Dinners/edit/${id}`)
+    }
+
+    const deleteDinner = async (id: string) => {
+      try {
+        const confirmed = window.confirm("Are you sure you want to delete this dinner?");
+        if (confirmed) {
+            await dinnerService.deleteDinner(id)
+            setDinners((prevDinners) => prevDinners.filter(dinner => dinner.id !== id)); // Update local state
+        }
+      } 
+      catch (err) {
+        setError('Failed to delete dinner.');
+      }
+    }
 
     if (loading) return <p>Loading... the api is eepy sleepy</p>;
     if (error) return <p>{error}</p>;
@@ -52,6 +73,8 @@ const Dinners = () => {
                         <th>Tags</th>
                         <th>Image</th>
                         {showIdColumn && <th>Id</th>}
+                        <th></th> 
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,13 +88,19 @@ const Dinners = () => {
                             <td>{dinner.ingredients.join(', ')}</td>
                             <td>{dinner.tags.join(', ')}</td>
                             <td>
-                                {dinner.image ? (
-                                    <img src={dinner.image} alt={dinner.name} style={{ maxWidth: '100px' }} />
+                                {dinner.imageData ? (
+                                    <img src={dinner.imageData} alt={dinner.name} style={{ maxWidth: '100px' }} />
                                 ) : (
                                     'No image'
                                 )}
                             </td>
                             {showIdColumn && <td>{dinner.id}</td>}
+                            <td>
+                            <button onClick={() => editDinner(dinner.id)}>Edit dinner</button>
+                            </td>
+                            <td>
+                            <button onClick={() => deleteDinner(dinner.id)}>Delete dinner</button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Dinners from './pages/Dinners';
 import CreateDinnerPlan from './pages/CreateDinnerPlan';
 import AddDinner from './pages/AddDinner';
+import EditDinner from './pages/EditDinner';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Dinners" element={<Dinners />} />
+          <Route path="/Dinners/edit/:id" element={<EditDinner />} />
           <Route path="/AddDinner" element={<AddDinner />} />
           <Route path="/CreateDinnerPlan" element={<CreateDinnerPlan />} />
         </Routes>

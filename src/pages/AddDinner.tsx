@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import apiService from '../services/DinnerService'; // Adjust the path if needed
-import { Dinner } from '../types/interfaces';
+import { CreateDinner, Dinner } from '../types/interfaces';
 import { DinnerType, MeatType, SkillLevel } from '../types/enums'; // Adjust the path if needed
 import styles from './AddDinner.module.css'; // Import the CSS module for styling
 
@@ -21,7 +21,9 @@ const AddDinnerPage = () => {
         if (file) {
           const reader = new FileReader();
           reader.onloadend = () => {
-            setImage(reader.result as string);
+            const base64String = reader.result as string;
+            const base64Data = base64String.split(',')[1]; // Strip the prefix for image byte
+            setImage(base64Data);
           };
           reader.readAsDataURL(file);
         }
@@ -30,8 +32,7 @@ const AddDinnerPage = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
-        const dinner: Dinner = {
-            id: 0, // Handled by api
+        const dinner: CreateDinner = {
             name,
             description,
             type,
@@ -39,7 +40,7 @@ const AddDinnerPage = () => {
             skillLevel,
             ingredients: ingredients.split(',').map(ingredient => ingredient.trim()),
             tags: tags.split(',').map(tag => tag.trim()),
-            image
+            imageData: image
         };
 
         try {
