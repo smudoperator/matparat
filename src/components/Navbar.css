@@ -1,9 +1,5 @@
 /* src/components/Navbar.css */
   
-.navbar-logo {
-    font-size: 1.5rem;
-  }
-  
   .navbar-links {
     list-style: none;
     display: flex;
@@ -11,8 +7,41 @@
   }
   
   .navbar-links a {
-    color: white;
+    color: #ddf5e0;
     text-decoration: none;
+  }
+
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    background-color: #0d4f21;
+  }
+
+  .navbar-name {
+    position: absolute;
+    left: 50%;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #839781;
+    text-align: center;
+    flex: 1;
+  }
+
+  .navbar-logo {
+    position: absolute;
+    left: 65%;
+    flex: 1;
+    height: 50px;
+  }
+
+  .navbar-logo-text {
+    position: absolute;
+    left: 50%;
+    flex: 1;
+    height: 50px;
+    filter: invert(1);
   }
 
   ul {
@@ -20,7 +49,6 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #0d4f21;
   }
 
   li {
@@ -39,3 +67,4 @@
   li a:hover {
     background-color: #1a7b44;
   }
+

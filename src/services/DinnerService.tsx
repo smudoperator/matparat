@@ -1,7 +1,7 @@
 // src/services/apiService.tsx
 
 import axios from 'axios';
-import { CreateDinner, Dinner } from '../types/interfaces';
+import { CreateDinner, Dinner, CreateDinnerPlanRequest, DinnerPlan } from '../types/interfaces';
 
 
 const API_BASE_URL = 'https://matpirat-dsgpfqc9fbhnf2hq.northeurope-01.azurewebsites.net';
@@ -57,6 +57,14 @@ const apiService = {
             throw error.response ? error.response.data : new Error(`Network error`);
         });
         return response.data;
+  },
+
+  planDinners: async (dinnerPlan: CreateDinnerPlanRequest): Promise<DinnerPlan> => {
+    const response = await axios.post(`${API_BASE_URL}/DinnerPlan/PlanDinners`)
+      .catch (function (error) {
+        throw error.reesponse ? error.response.data : new Error(`Network error`);
+      })
+      return response.data;
   }
 
 };

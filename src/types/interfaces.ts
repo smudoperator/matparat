@@ -1,4 +1,4 @@
-import { DinnerType, MeatType, SkillLevel } from "./enums";
+import { DayOfWeek, DinnerType, MeatType, SkillLevel } from "./enums";
 
 // interfaces/Dinner.ts
 export interface Dinner {
@@ -23,4 +23,19 @@ export interface CreateDinner {
     ingredients: string[];
     tags: string[];
     imageData: string | null;
+}
+
+// interfaces/CreateDinnerPlanRequest.ts
+export interface CreateDinnerPlanRequest {
+    tacoFriday: boolean,
+    startDay: DayOfWeek,
+    numberOfDays: number,
+    numberOfFish: number
+}
+
+// interfaces/DinnerPlan.ts
+export interface DinnerPlan {
+    dinners: [Dinner],
+    startDay: DayOfWeek,
+    numberOfDays: number
 }
