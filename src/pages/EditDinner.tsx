@@ -17,7 +17,7 @@ const EditDinner = () => {
   const [skillLevel, setSkillLevel] = useState<SkillLevel>(SkillLevel.Easy);
   const [ingredients, setIngredients] = useState('');
   const [tags, setTags] = useState('');
-  const [image, setImage] = useState<File | null>(null);
+  const [image, setImage] = useState<string | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -45,10 +45,13 @@ const EditDinner = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
-    setImage(file);
     if (file) {
+      console.log("file = true")
       const reader = new FileReader();
       reader.onloadend = () => {
+        const base64String = reader.result as string;
+        const base64Data = base64String.split(',')[1]; // Strip the prefix for image byte
+        setImage(base64Data);
         setImagePreview(reader.result as string);
       };
       reader.readAsDataURL(file);
@@ -74,13 +77,13 @@ const EditDinner = () => {
       skillLevel,
       ingredients: ingredients.split(',').map(ingredient => ingredient.trim()),
       tags: tags.split(',').map(tag => tag.trim()),
-      imageData: imagePreview || null
+      imageData: image || null
     };
 
     try {
       await dinnerService.updateDinner(updatedDinner);
       setSuccess('Dinner updated successfully!');
-      navigate('/dinners');
+      navigate('/Dinners');
     } catch (error) {
       setError('Failed to update dinner.');
       console.error('Update failed:', error);

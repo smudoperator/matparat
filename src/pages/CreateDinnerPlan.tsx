@@ -1,6 +1,7 @@
 // src/pages/CreateDinnerPlan.tsx
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DinnerService from '../services/DinnerService'; // Adjust the path as necessary
 import { CreateDinnerPlanRequest, DinnerPlan } from '../types/interfaces';
 
@@ -12,6 +13,8 @@ const CreateDinnerPlanPage: React.FC = () => {
     numberOfDays: 7,
     numberOfFish: 2
   });
+
+  const navigate = useNavigate();
 
   // State to store the result of the DinnerPlan
   const [dinnerPlan, setDinnerPlan] = useState<DinnerPlan | null>(null);
@@ -33,7 +36,11 @@ const CreateDinnerPlanPage: React.FC = () => {
     e.preventDefault();
     try {
       const result = await DinnerService.planDinners(formData);
-      setDinnerPlan(result); // Save the returned DinnerPlan
+      // Redirect to the DinnerPlanPage with the dinner plan data
+
+      // console.log("DinnerPlan result:", result); // Debug log
+
+      navigate('/DinnerPlan', { state: result });
     } catch (error) {
       console.error('Error creating dinner plan:', error);
     }
@@ -86,19 +93,6 @@ const CreateDinnerPlanPage: React.FC = () => {
         </label>
         <button type="submit">Plan Dinners</button>
       </form>
-
-      {dinnerPlan && (
-        <div>
-          <h2>Your Dinner Plan</h2>
-          <p>Start Day: {dinnerPlan.startDay}</p>
-          <p>Number of Days: {dinnerPlan.numberOfDays}</p>
-          <ul>
-            {dinnerPlan.dinners.map((dinner, index) => (
-              <li key={index}>{dinner.name}</li> // Assuming `Dinner` has a `name` property
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   );
 };

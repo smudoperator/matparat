@@ -1,8 +1,18 @@
 // src/pages/Home.tsx
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Home: React.FC = () => {
+
+const navigate = useNavigate();
+
+const planDinners = () => {
+  navigate('/CreateDinnerPlan');
+}
+
   return (
     <div className="container">
       <div className="home-content">
@@ -10,7 +20,7 @@ const Home: React.FC = () => {
         <p className="home-subtitle">
           La MatPirat planlegge morgendagens fangst og nyt en smakfull reise gjennom ukens måltider.
         </p>
-        <button className="cta-button">Start planlegging</button>
+        <button onClick={planDinners}>Start planlegging</button>
       </div>
     </div>
   );

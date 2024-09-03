@@ -6,6 +6,7 @@ import dinnerService from '../services/DinnerService'; // Adjust the path if nee
 import { Dinner } from '../types/interfaces';
 import styles from './Dinners.module.css';
 import { DinnerTypeLabels, MeatTypeLabels, SkillLevelLabels } from '../types/enums';
+import { byteArrayToBase64, stringToUint8Array } from '../utils/help';
 
 const Dinners = () => {
     const [dinners, setDinners] = useState<Dinner[]>([]);
@@ -34,6 +35,19 @@ const Dinners = () => {
     const handleToggleColumn = () => {
       setShowIdColumn(!showIdColumn);
     };
+
+    function stringToUint8Array(data: string): Uint8Array {
+        // Assuming the string is a base64-encoded string representing the byte array
+        const binaryString = window.atob(data); // Decode base64 string to binary string
+        const len = binaryString.length;
+        const bytes = new Uint8Array(len);
+    
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
+    
+        return bytes;
+    }
 
     const editDinner = (id: string) => {
       navigate(`/Dinners/edit/${id}`)
@@ -78,31 +92,35 @@ const Dinners = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {dinners.map(dinner => (
-                        <tr key={dinner.id}>
-                            <td>{dinner.name}</td>
-                            <td>{dinner.description}</td>
-                            <td>{DinnerTypeLabels[dinner.type]}</td>
-                            <td>{MeatTypeLabels[dinner.meatType]}</td>
-                            <td>{SkillLevelLabels[dinner.skillLevel]}</td>
-                            <td>{dinner.ingredients.join(', ')}</td>
-                            <td>{dinner.tags.join(', ')}</td>
-                            <td>
-                                {dinner.imageData ? (
-                                    <img src={dinner.imageData} alt={dinner.name} style={{ maxWidth: '100px' }} />
-                                ) : (
-                                    'No image'
-                                )}
-                            </td>
-                            {showIdColumn && <td>{dinner.id}</td>}
-                            <td>
-                            <button onClick={() => editDinner(dinner.id)}>Edit dinner</button>
-                            </td>
-                            <td>
-                            <button onClick={() => deleteDinner(dinner.id)}>Delete dinner</button>
-                            </td>
-                        </tr>
-                    ))}
+                {dinners.map(dinner => (
+                    <tr key={dinner.id}>
+                    <td>{dinner.name}</td>
+                    <td>{dinner.description}</td>
+                    <td>{DinnerTypeLabels[dinner.type]}</td>
+                    <td>{MeatTypeLabels[dinner.meatType]}</td>
+                    <td>{SkillLevelLabels[dinner.skillLevel]}</td>
+                    <td>{dinner.ingredients.join(', ')}</td>
+                    <td>{dinner.tags.join(', ')}</td>
+                    <td>
+                        {dinner.imageData ? (
+                            <img
+                                src={`data:image/jpeg;base64,${byteArrayToBase64(stringToUint8Array(dinner.imageData))}`}
+                                alt={dinner.name}
+                                style={{ maxWidth: '100px' }}
+                            />
+                        ) : (
+                            'No image'
+                        )}
+                    </td>
+                    {showIdColumn && <td>{dinner.id}</td>}
+                    <td>
+                        <button onClick={() => editDinner(dinner.id)}>Edit dinner</button>
+                    </td>
+                    <td>
+                        <button onClick={() => deleteDinner(dinner.id)}>Delete dinner</button>
+                    </td>
+                </tr>
+                ))}
                 </tbody>
             </table>
         </div>

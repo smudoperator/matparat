@@ -65,3 +65,25 @@ export enum DayOfWeek {
     Friday = 5,
     Saturday = 6
 }
+
+export const DayOfWeekLabels: { [key in DayOfWeek]: string } = {
+    [DayOfWeek.Sunday]: 'Sunday',
+    [DayOfWeek.Monday]: 'Monday',
+    [DayOfWeek.Tuesday]: 'Tuesday',
+    [DayOfWeek.Wednesday]: 'Wednesday',
+    [DayOfWeek.Thursday]: 'Thursday',
+    [DayOfWeek.Friday]: 'Friday',
+    [DayOfWeek.Saturday]: 'Saturday',
+}
+
+// Utility function for enum iteration
+export class EnumUtils {
+    static of<T extends object>(e: T) {
+        const values = Object.values(e).filter(value => typeof value === 'number') as number[];
+        return {
+            next: <K extends keyof T>(v: T[K]) => values[(values.indexOf(v as unknown as number) + 1) % values.length],
+            prev: <K extends keyof T>(v: T[K]) => values[(values.indexOf(v as unknown as number) - 1 + values.length) % values.length],
+            values: () => values
+        };
+    }
+}

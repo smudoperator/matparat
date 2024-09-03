@@ -35,7 +35,7 @@ export interface CreateDinnerPlanRequest {
 
 // interfaces/DinnerPlan.ts
 export interface DinnerPlan {
-    dinners: [Dinner],
+    dinners: Dinner[],
     startDay: DayOfWeek,
     numberOfDays: number
 }

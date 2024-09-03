@@ -43,8 +43,19 @@ const apiService = {
   },
 
   updateDinner: async (dinner: Dinner) => {
+    const { id, name, description, type, meatType, skillLevel, ingredients, tags, imageData } = dinner;
     console.log(dinner);
-    const response = await axios.post(`${API_BASE_URL}/Dinner/EditDinner`, { dinner })
+    const response = await axios.post(`${API_BASE_URL}/Dinner/EditDinner`, { 
+      id,
+      name,
+      description,
+      type,
+      meatType,
+      skillLevel,
+      ingredients,
+      tags,
+      imageData
+     })
         .catch(function (error) {
             throw error.response ? error.response.data : new Error(`Network error`);
         });
@@ -59,13 +70,13 @@ const apiService = {
         return response.data;
   },
 
-  planDinners: async (dinnerPlan: CreateDinnerPlanRequest): Promise<DinnerPlan> => {
-    const response = await axios.post(`${API_BASE_URL}/DinnerPlan/PlanDinners`)
-      .catch (function (error) {
-        throw error.reesponse ? error.response.data : new Error(`Network error`);
-      })
-      return response.data;
-  }
+  planDinners: async (dinnerPlanRequest: CreateDinnerPlanRequest): Promise<DinnerPlan> => {
+    const response = await axios.post(`${API_BASE_URL}/DinnerPlan/PlanDinners`, { dinnerPlanRequest })
+    .catch (function (error) {
+      throw error.response ? error.response.data : new Error(`Network error`);
+  });
+  return response.data;
+}
 
 };
 
