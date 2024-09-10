@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.c9764b28.css",
-    "main.js": "/static/js/main.5bb42680.js",
-    "static/js/453.8b93d297.chunk.js": "/static/js/453.8b93d297.chunk.js",
-    "static/media/MatPirat-logo.png": "/static/media/MatPirat-logo.3f2a39895417e02aecfe.png",
-    "index.html": "/index.html",
-    "main.c9764b28.css.map": "/static/css/main.c9764b28.css.map",
-    "main.5bb42680.js.map": "/static/js/main.5bb42680.js.map",
-    "453.8b93d297.chunk.js.map": "/static/js/453.8b93d297.chunk.js.map"
+    "main.css": "/joesgarage2/static/css/main.3712a6b8.css",
+    "main.js": "/joesgarage2/static/js/main.81c097d0.js",
+    "static/js/453.8b93d297.chunk.js": "/joesgarage2/static/js/453.8b93d297.chunk.js",
+    "static/media/MatPirat-logo.png": "/joesgarage2/static/media/MatPirat-logo.3f2a39895417e02aecfe.png",
+    "index.html": "/joesgarage2/index.html",
+    "main.3712a6b8.css.map": "/joesgarage2/static/css/main.3712a6b8.css.map",
+    "main.81c097d0.js.map": "/joesgarage2/static/js/main.81c097d0.js.map",
+    "453.8b93d297.chunk.js.map": "/joesgarage2/static/js/453.8b93d297.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c9764b28.css",
-    "static/js/main.5bb42680.js"
+    "static/css/main.3712a6b8.css",
+    "static/js/main.81c097d0.js"
   ]
 }
