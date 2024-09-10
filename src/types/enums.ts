@@ -67,13 +67,13 @@ export enum DayOfWeek {
 }
 
 export const DayOfWeekLabels: { [key in DayOfWeek]: string } = {
-    [DayOfWeek.Sunday]: 'Sunday',
-    [DayOfWeek.Monday]: 'Monday',
-    [DayOfWeek.Tuesday]: 'Tuesday',
-    [DayOfWeek.Wednesday]: 'Wednesday',
-    [DayOfWeek.Thursday]: 'Thursday',
-    [DayOfWeek.Friday]: 'Friday',
-    [DayOfWeek.Saturday]: 'Saturday',
+    [DayOfWeek.Sunday]: 'Søndag',
+    [DayOfWeek.Monday]: 'Mandag',
+    [DayOfWeek.Tuesday]: 'Tirsdag',
+    [DayOfWeek.Wednesday]: 'Onsdag',
+    [DayOfWeek.Thursday]: 'Torsdag',
+    [DayOfWeek.Friday]: 'Fredag',
+    [DayOfWeek.Saturday]: 'Lørdag',
 }
 
 // Utility function for enum iteration

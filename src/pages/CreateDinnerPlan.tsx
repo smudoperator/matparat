@@ -11,7 +11,7 @@ const CreateDinnerPlanPage: React.FC = () => {
     tacoFriday: false,
     startDay: 1, // Default to Monday
     numberOfDays: 7,
-    numberOfFish: 2
+    numberOfFish: 1
   });
 
   const navigate = useNavigate();
@@ -22,8 +22,10 @@ const CreateDinnerPlanPage: React.FC = () => {
   // Handle form input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type, checked } = e.target as HTMLInputElement;
-    // If the event target is a checkbox, checked will be available; otherwise, it will be undefined.
-    const newValue = type === 'checkbox' ? (checked as boolean) : (value as unknown as string | number);
+    
+    const newValue = type === 'checkbox' ? (checked as boolean)
+                    : name === 'startDay' ? Number(value) 
+                    : value; 
   
     setFormData({
       ...formData,
@@ -47,33 +49,36 @@ const CreateDinnerPlanPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Plan Your Dinner Week</h1>
+    <div className="container">
+      <h1>Fyr inn noe her så blir det bra</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Taco Friday:
-          <input
+          Taco Fredag?:
+          <input className="form-checkbox"
             type="checkbox"
             name="tacoFriday"
             checked={formData.tacoFriday}
             onChange={handleChange}
           />
         </label>
+        <div className="form-group">
         <label>
-          Start Day:
+          Velg dag planen skal starte på:
           <select name="startDay" value={formData.startDay} onChange={handleChange}>
-            <option value={0}>Sunday</option>
-            <option value={1}>Monday</option>
-            <option value={2}>Tuesday</option>
-            <option value={3}>Wednesday</option>
-            <option value={4}>Thursday</option>
-            <option value={5}>Friday</option>
-            <option value={6}>Saturday</option>
+            <option value={0}>Søndag</option>
+            <option value={1}>Mandag</option>
+            <option value={2}>Tirsdag</option>
+            <option value={3}>Onsdag</option>
+            <option value={4}>Torsdag</option>
+            <option value={5}>Fredag</option>
+            <option value={6}>Lørdag</option>
           </select>
         </label>
+        </div>
+        
         <label>
-          Number of Days:
-          <input
+          Hvor lenge skal planen vare?
+          <input className="form-input"
             type="number"
             name="numberOfDays"
             value={formData.numberOfDays}
@@ -82,8 +87,8 @@ const CreateDinnerPlanPage: React.FC = () => {
           />
         </label>
         <label>
-          Number of Fish Dinners:
-          <input
+          Btw, how much is the fish?
+          <input className="form-input"
             type="number"
             name="numberOfFish"
             value={formData.numberOfFish}

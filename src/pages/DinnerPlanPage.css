@@ -1,0 +1,51 @@
+.dinner-plan-container {
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.weekday-section {
+    margin-bottom: 40px;
+}
+
+.dinner-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.dinner-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    text-align: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.dinner-card:hover {
+    transform: scale(1.05);
+}
+
+.dinner-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.weekday-header {
+    padding-bottom: 50px;
+}
+
+.dinner-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.dinner-card p {
+    color: #555;
+}

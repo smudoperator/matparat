@@ -71,7 +71,13 @@ const apiService = {
   },
 
   planDinners: async (dinnerPlanRequest: CreateDinnerPlanRequest): Promise<DinnerPlan> => {
-    const response = await axios.post(`${API_BASE_URL}/DinnerPlan/PlanDinners`, { dinnerPlanRequest })
+    const {tacoFriday, startDay, numberOfDays, numberOfFish } = dinnerPlanRequest;
+    const response = await axios.post(`${API_BASE_URL}/DinnerPlan/PlanDinners`, { 
+      tacoFriday,
+      startDay,
+      numberOfDays,
+     numberOfFish
+    })
     .catch (function (error) {
       throw error.response ? error.response.data : new Error(`Network error`);
   });
