@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/JoesGarage2/static/css/main.c9764b28.css",
+    "main.js": "/JoesGarage2/static/js/main.05635a9e.js",
+    "static/js/453.8b93d297.chunk.js": "/JoesGarage2/static/js/453.8b93d297.chunk.js",
+    "static/media/MatPirat-logo.png": "/JoesGarage2/static/media/MatPirat-logo.3f2a39895417e02aecfe.png",
+    "index.html": "/JoesGarage2/index.html",
+    "main.c9764b28.css.map": "/JoesGarage2/static/css/main.c9764b28.css.map",
+    "main.05635a9e.js.map": "/JoesGarage2/static/js/main.05635a9e.js.map",
+    "453.8b93d297.chunk.js.map": "/JoesGarage2/static/js/453.8b93d297.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c9764b28.css",
+    "static/js/main.05635a9e.js"
+  ]
+}
