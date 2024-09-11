@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/JoesGarage2/static/css/main.3712a6b8.css",
-    "main.js": "/JoesGarage2/static/js/main.ebbb2713.js",
+    "main.css": "/JoesGarage2/static/css/main.0d712671.css",
+    "main.js": "/JoesGarage2/static/js/main.045f5f65.js",
     "static/js/453.8b93d297.chunk.js": "/JoesGarage2/static/js/453.8b93d297.chunk.js",
+    "static/media/neon-hamburger.png": "/JoesGarage2/static/media/neon-hamburger.9612c6840f298f2437cf.png",
     "static/media/MatPirat-logo.png": "/JoesGarage2/static/media/MatPirat-logo.3f2a39895417e02aecfe.png",
     "index.html": "/JoesGarage2/index.html",
-    "main.3712a6b8.css.map": "/JoesGarage2/static/css/main.3712a6b8.css.map",
-    "main.ebbb2713.js.map": "/JoesGarage2/static/js/main.ebbb2713.js.map",
+    "main.0d712671.css.map": "/JoesGarage2/static/css/main.0d712671.css.map",
+    "main.045f5f65.js.map": "/JoesGarage2/static/js/main.045f5f65.js.map",
     "453.8b93d297.chunk.js.map": "/JoesGarage2/static/js/453.8b93d297.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3712a6b8.css",
-    "static/js/main.ebbb2713.js"
+    "static/css/main.0d712671.css",
+    "static/js/main.045f5f65.js"
   ]
 }
