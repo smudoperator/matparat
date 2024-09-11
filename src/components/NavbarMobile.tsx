@@ -1,37 +1,32 @@
 // src/components/NavbarMobile.tsx
 
 import { Link } from 'react-router-dom';
-import './Navbar.css';
-import text from '../assets/MatPirat-text.png';
-import logo from '../assets/MatPirat-logo.png';
+import './NavbarMobile.css'; // Separate CSS for mobile
 import { useState } from 'react';
+import neonHamburger from '../assets/neon-hamburger.png';
 
 const NavbarMobile = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
-      setIsOpen(!isOpen);
+        setIsOpen(!isOpen);
     };
-  
+
     return (
-      <>
-        <div className="navbar-mobile-container" onClick={toggleMenu}>
-          <div className={`bar ${isOpen ? "open" : ""}`}></div>
-          <div className={`bar ${isOpen ? "open" : ""}`}></div>
-          <div className={`bar ${isOpen ? "open" : ""}`}></div>
-        </div>
-        {isOpen && (
-          <div className="navbar-mobile-menu">
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/dinners">Dinners</Link></li>
-              <li><Link to="/addDinner">Add Dinner</Link></li>
-              <li><Link to="/createDinnerPlan">Plan your dinner</Link></li>
-            </ul>
-          </div>
-        )}
-      </>
+        <>
+            <div className="mobile-menu-icon" onClick={toggleMenu}>
+                <img src={neonHamburger} alt="Menu" className="hamburger-icon" />
+            </div>
+            <div className={`mobile-menu ${isOpen ? "open" : ""}`}>
+                <ul>
+                    <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
+                    <li><Link to="/dinners" onClick={toggleMenu}>Dinners</Link></li>
+                    <li><Link to="/addDinner" onClick={toggleMenu}>Add Dinner</Link></li>
+                    <li><Link to="/createDinnerPlan" onClick={toggleMenu}>Plan Dinners</Link></li>
+                </ul>
+            </div>
+        </>
     );
-  };
+};
 
 export default NavbarMobile;

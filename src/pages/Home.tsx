@@ -1,13 +1,26 @@
 // src/pages/Home.tsx
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import dinnerService from '../services/DinnerService';
 
 
 
 const Home: React.FC = () => {
 
 const navigate = useNavigate();
+
+// Ping the API to wake it up from eepy sleep
+useEffect(() => {
+  const pingApi = async () => {
+    try {
+      await dinnerService.getDinnerById('fakeid');
+    } catch (error) {
+    }
+  };
+
+  pingApi();
+}, []);
 
 const planDinners = () => {
   navigate('/CreateDinnerPlan');

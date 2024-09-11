@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import dinnerService from '../services/DinnerService'; // Adjust the path if needed
+import dinnerService from '../services/DinnerService';
 import { Dinner } from '../types/interfaces';
 import styles from './Dinners.module.css';
 import { DinnerTypeLabels, MeatTypeLabels, SkillLevelLabels } from '../types/enums';

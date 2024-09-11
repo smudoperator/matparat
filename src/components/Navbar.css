@@ -1,144 +1,44 @@
 /* src/components/Navbar.css */
   
-  .navbar-links {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .navbar-links a {
-    color: #ddf5e0;
-    text-decoration: none;
-  }
+ /* Base styles for the navbar */
+.navbar {
+  background-color: var(--primary-color);
+  padding: 10px;
+}
 
-  .navbar-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    background-color: #0d4f21;
-  }
-
-  .navbar-mobile {
-    display: none;
-  }
-
-  .navbar-mobile-container {
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 20px;
-    background-color: #0d4f21;
-  }
-
-  .navbar-mobile .bar {
-    width: 25px;
-    height: 3px;
-    background-color: black;
-    transition: all 0.3s ease;
-  }
-
-  .navbar-mobile .bar.open {
-    background-color: gray;
-    transform: rotate(45deg);
-  }
-
-  /* Pop-up menu styles */
-.navbar-mobile-menu {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  background-color: #fff;
+.navbar-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  align-items: center; /* This will vertically center everything in the container */
+  height: 60px; /* Make sure the height is set */
+  padding: 0 10px;
 }
 
-.navbar-mobile-menu ul {
+.navbar-links {
+  display: flex;
+  gap: 1rem;
   list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
 }
 
-.navbar-mobile-menu ul li {
-  padding: 15px 0;
-  text-align: center;
-}
-
-.navbar-mobile-menu ul li a {
+.navbar-links a {
+  color: var(--text-color-light);
   text-decoration: none;
-  color: black;
-  font-weight: bold;
 }
 
-  .navbar-name {
-    position: absolute;
-    left: 50%;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #839781;
-    text-align: center;
-    flex: 1;
-  }
+.navbar-links a:hover {
+  background-color: var(--link-color);
+}
 
-  .navbar-images {
-    display: flex;
-    align-items: center;
-    position: relative;
-    right: 0;
-  }
+/* Logo and brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
 
-  .navbar-logo {
-    flex: 1;
-    height: 50px;
-  }
+.brand-logo, .brand-text {
+  height: 50px;
+}
 
-  .navbar-logo-text {
-    flex: 1;
-    height: 50px;
-    filter: invert(1);
-  }
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    padding: 14px;
-    text-decoration: none;
-  }
-
-  li a:hover {
-    background-color: #1a7b44;
-  }
-
-  /* Mobile view */
-@media (max-width: 768px) {
-  .navbar-links {
-    display: none;
-  }
-
-  .navbar-mobile {
-    display: block;
-  }
-
-  .navbar-images {
-    flex-grow: 1;
-    justify-content: flex-end;
-  }
+.brand-text {
+  filter: invert(1);
 }

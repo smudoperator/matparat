@@ -69,3 +69,19 @@
   section {
     padding: 40px 0;
   }
+
+
+  /* COLORS */
+
+  :root {
+    --primary-color: #0d4f21;
+    --primary-color-hover: #446a50;
+    --secondary-color: #fc7f6c;
+    --secondary-color-hover: #fbaa9e;
+    --background-color-light: #ddf5e0;
+    --background-color-dark: #839781;
+    --text-color-light: #ddf5e0;
+    --text-color-dark: #383e37;
+    --link-color: #1a7b44;
+    --link-hover-color: #166837;
+  }
