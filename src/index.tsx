@@ -9,18 +9,27 @@ import reportWebVitals from './reportWebVitals';
 const currentUrl = window.location.href;
 const lowercaseUrl = currentUrl.toLowerCase();
 
-if (currentUrl !== lowercaseUrl) {
-  window.location.href = lowercaseUrl;
-} else {
-  const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement
-  );
-  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  );
-}
+// if (currentUrl !== lowercaseUrl) {
+//   window.location.href = lowercaseUrl;
+// } else {
+//   const root = ReactDOM.createRoot(
+//     document.getElementById('root') as HTMLElement
+//   );
+//   root.render(
+//     <React.StrictMode>
+//       <App />
+//     </React.StrictMode>
+//   );
+// }
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
