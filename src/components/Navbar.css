@@ -4,6 +4,7 @@
 .navbar {
   background-color: var(--primary-color);
   padding: 10px;
+  z-index: 999;
 }
 
 .navbar-container {
@@ -11,7 +12,8 @@
   justify-content: space-between;
   align-items: center; /* This will vertically center everything in the container */
   height: 60px; /* Make sure the height is set */
-  padding: 0 10px;
+  padding: 10px;
+  z-index: 999;
 }
 
 .navbar-links {
