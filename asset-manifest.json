@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/matparat/static/css/main.0d712671.css",
-    "main.js": "/matparat/static/js/main.ab07e067.js",
+    "main.css": "/matparat/static/css/main.d1c579b0.css",
+    "main.js": "/matparat/static/js/main.3476175e.js",
     "static/js/453.8b93d297.chunk.js": "/matparat/static/js/453.8b93d297.chunk.js",
     "static/media/neon-hamburger.png": "/matparat/static/media/neon-hamburger.9612c6840f298f2437cf.png",
     "static/media/MatPirat-logo.png": "/matparat/static/media/MatPirat-logo.3f2a39895417e02aecfe.png",
     "index.html": "/matparat/index.html",
-    "main.0d712671.css.map": "/matparat/static/css/main.0d712671.css.map",
-    "main.ab07e067.js.map": "/matparat/static/js/main.ab07e067.js.map",
+    "main.d1c579b0.css.map": "/matparat/static/css/main.d1c579b0.css.map",
+    "main.3476175e.js.map": "/matparat/static/js/main.3476175e.js.map",
     "453.8b93d297.chunk.js.map": "/matparat/static/js/453.8b93d297.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0d712671.css",
-    "static/js/main.ab07e067.js"
+    "static/css/main.d1c579b0.css",
+    "static/js/main.3476175e.js"
   ]
 }
