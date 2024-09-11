@@ -12,7 +12,7 @@ import DinnerPlanPage from './pages/DinnerPlanPage';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/matparat">
       <div>
         <Navbar />
         <Routes>
