@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/matparat/static/css/main.d1c579b0.css",
-    "main.js": "/matparat/static/js/main.3476175e.js",
+    "main.js": "/matparat/static/js/main.455c3291.js",
     "static/js/453.8b93d297.chunk.js": "/matparat/static/js/453.8b93d297.chunk.js",
     "static/media/neon-hamburger.png": "/matparat/static/media/neon-hamburger.9612c6840f298f2437cf.png",
     "static/media/MatPirat-logo.png": "/matparat/static/media/MatPirat-logo.3f2a39895417e02aecfe.png",
     "index.html": "/matparat/index.html",
     "main.d1c579b0.css.map": "/matparat/static/css/main.d1c579b0.css.map",
-    "main.3476175e.js.map": "/matparat/static/js/main.3476175e.js.map",
+    "main.455c3291.js.map": "/matparat/static/js/main.455c3291.js.map",
     "453.8b93d297.chunk.js.map": "/matparat/static/js/453.8b93d297.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d1c579b0.css",
-    "static/js/main.3476175e.js"
+    "static/js/main.455c3291.js"
   ]
 }
