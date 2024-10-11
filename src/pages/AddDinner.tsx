@@ -11,6 +11,8 @@ const AddDinnerPage = () => {
     const [meatType, setMeatType] = useState<MeatType>(MeatType.Beef); // Default to Beef
     const [skillLevel, setSkillLevel] = useState<SkillLevel>(SkillLevel.Easy); // Default to Easy
     const [ingredients, setIngredients] = useState<string>('');
+    const [worthMakingLeftovers, setWorthMakingLeftovers] = useState<boolean>(false); // Default to false
+    const [notes, setNotes] = useState<string>(""); // Default to empty perchance? Empty or null hmmmmm
     const [tags, setTags] = useState<string>('');
     const [image, setImage] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
@@ -39,6 +41,8 @@ const AddDinnerPage = () => {
             meatType,
             skillLevel,
             ingredients: ingredients.split(',').map(ingredient => ingredient.trim()),
+            worthMakingLeftovers,
+            notes,
             tags: tags.split(',').map(tag => tag.trim()),
             imageData: image
         };
@@ -107,6 +111,25 @@ const AddDinnerPage = () => {
                         id="ingredients"
                         value={ingredients}
                         onChange={e => setIngredients(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className={styles.formGroup}>
+                    <label htmlFor="worthMakingLeftovers">Worth making leftovers?</label>
+                    <input 
+                        className="form-checkbox"
+                        type="checkbox"
+                        name="worthMakingLeftovers"
+                        checked={worthMakingLeftovers}
+                        onChange={handleFileChange}
+                    />
+                </div>
+                <div className={styles.formGroup}>
+                    <label htmlFor="notes">Notes:</label>
+                    <textarea
+                        id="notes"
+                        value={notes}
+                        onChange={e => setNotes(e.target.value)}
                         required
                     />
                 </div>

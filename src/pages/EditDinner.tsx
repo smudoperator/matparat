@@ -16,6 +16,8 @@ const EditDinner = () => {
   const [meatType, setMeatType] = useState<MeatType>(MeatType.Beef);
   const [skillLevel, setSkillLevel] = useState<SkillLevel>(SkillLevel.Easy);
   const [ingredients, setIngredients] = useState('');
+  const [worthMakingLeftovers, setWorthMakingLeftovers] = useState<boolean>(false);
+  const [notes, setNotes] = useState<string>('');
   const [tags, setTags] = useState('');
   const [image, setImage] = useState<string | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -33,8 +35,10 @@ const EditDinner = () => {
         setMeatType(fetchedDinner.meatType);
         setSkillLevel(fetchedDinner.skillLevel);
         setIngredients(fetchedDinner.ingredients.join(', '));
+        setWorthMakingLeftovers(fetchedDinner.worthMakingLeftovers);
+        setNotes(fetchedDinner.notes);
         setTags(fetchedDinner.tags.join(', '));
-        setImagePreview(fetchedDinner.imageData);
+        setImagePreview(fetchedDinner.imageData); // Set existing image preview
       } catch (error) {
         console.error('Failed to fetch dinner:', error);
       }
@@ -46,17 +50,14 @@ const EditDinner = () => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
     if (file) {
-      console.log("file = true")
       const reader = new FileReader();
       reader.onloadend = () => {
         const base64String = reader.result as string;
         const base64Data = base64String.split(',')[1]; // Strip the prefix for image byte
-        setImage(base64Data);
-        setImagePreview(reader.result as string);
+        setImage(base64Data); // Set the new image
+        setImagePreview(base64String); // Set the preview
       };
       reader.readAsDataURL(file);
-    } else {
-      setImagePreview(null);
     }
   };
 
@@ -64,9 +65,9 @@ const EditDinner = () => {
     e.preventDefault();
 
     if (!id) {
-        setError('Dinner Id is missing.');
-        return;
-      }
+      setError('Dinner Id is missing.');
+      return;
+    }
 
     const updatedDinner = {
       id,
@@ -75,9 +76,11 @@ const EditDinner = () => {
       type,
       meatType,
       skillLevel,
-      ingredients: ingredients.split(',').map(ingredient => ingredient.trim()),
-      tags: tags.split(',').map(tag => tag.trim()),
-      imageData: image || null
+      ingredients: ingredients.split(',').map((ingredient) => ingredient.trim()),
+      worthMakingLeftovers,
+      notes,
+      tags: tags.split(',').map((tag) => tag.trim()),
+      imageData: image || dinner?.imageData || null, // Retain existing image if no new one is uploaded
     };
 
     try {
@@ -88,6 +91,10 @@ const EditDinner = () => {
       setError('Failed to update dinner.');
       console.error('Update failed:', error);
     }
+  };
+
+  const handleCheckboxChange = () => {
+    setWorthMakingLeftovers((prev) => !prev);
   };
 
   if (!dinner) {
@@ -106,7 +113,7 @@ const EditDinner = () => {
             type="text"
             id="name"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
             required
           />
         </div>
@@ -115,31 +122,51 @@ const EditDinner = () => {
           <textarea
             id="description"
             value={description}
-            onChange={e => setDescription(e.target.value)}
+            onChange={(e) => setDescription(e.target.value)}
             required
           />
         </div>
         <div className={styles.formGroup}>
           <label htmlFor="type">Type:</label>
-          <select id="type" value={type} onChange={e => setType(parseInt(e.target.value) as DinnerType)}>
+          <select
+            id="type"
+            value={type}
+            onChange={(e) => setType(parseInt(e.target.value) as DinnerType)}
+          >
             {Object.entries(DinnerType).map(([key, value]) => (
-              <option key={value} value={value}>{key}</option>
+              <option key={value} value={value}>
+                {key}
+              </option>
             ))}
           </select>
         </div>
         <div className={styles.formGroup}>
           <label htmlFor="meatType">Meat Type:</label>
-          <select id="meatType" value={meatType} onChange={e => setMeatType(parseInt(e.target.value) as MeatType)}>
+          <select
+            id="meatType"
+            value={meatType}
+            onChange={(e) => setMeatType(parseInt(e.target.value) as MeatType)}
+          >
             {Object.entries(MeatType).map(([key, value]) => (
-              <option key={value} value={value}>{key}</option>
+              <option key={value} value={value}>
+                {key}
+              </option>
             ))}
           </select>
         </div>
         <div className={styles.formGroup}>
           <label htmlFor="skillLevel">Skill Level:</label>
-          <select id="skillLevel" value={skillLevel} onChange={e => setSkillLevel(parseInt(e.target.value) as SkillLevel)}>
+          <select
+            id="skillLevel"
+            value={skillLevel}
+            onChange={(e) =>
+              setSkillLevel(parseInt(e.target.value) as SkillLevel)
+            }
+          >
             {Object.entries(SkillLevel).map(([key, value]) => (
-              <option key={value} value={value}>{key}</option>
+              <option key={value} value={value}>
+                {key}
+              </option>
             ))}
           </select>
         </div>
@@ -149,8 +176,26 @@ const EditDinner = () => {
             type="text"
             id="ingredients"
             value={ingredients}
-            onChange={e => setIngredients(e.target.value)}
+            onChange={(e) => setIngredients(e.target.value)}
             required
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="worthMakingLeftovers">Worth making leftovers?</label>
+          <input
+            className="form-checkbox"
+            type="checkbox"
+            name="worthMakingLeftovers"
+            checked={worthMakingLeftovers}
+            onChange={handleCheckboxChange}
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="notes">Notes:</label>
+          <textarea
+            id="notes"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
           />
         </div>
         <div className={styles.formGroup}>
@@ -159,7 +204,7 @@ const EditDinner = () => {
             type="text"
             id="tags"
             value={tags}
-            onChange={e => setTags(e.target.value)}
+            onChange={(e) => setTags(e.target.value)}
             required
           />
         </div>
@@ -171,9 +216,17 @@ const EditDinner = () => {
             accept="image/*"
             onChange={handleFileChange}
           />
-          {imagePreview && <img src={imagePreview} alt="Selected preview" className={styles.imagePreview} />}
+          {imagePreview && (
+            <img
+              src={imagePreview}
+              alt="Selected preview"
+              className={styles.imagePreview}
+            />
+          )}
         </div>
-        <button type="submit" className={styles.submitButton}>Save Changes</button>
+        <button type="submit" className={styles.submitButton}>
+          Save Changes
+        </button>
       </form>
     </div>
   );

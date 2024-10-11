@@ -36,19 +36,6 @@ const Dinners = () => {
       setShowIdColumn(!showIdColumn);
     };
 
-    function stringToUint8Array(data: string): Uint8Array {
-        // Assuming the string is a base64-encoded string representing the byte array
-        const binaryString = window.atob(data); // Decode base64 string to binary string
-        const len = binaryString.length;
-        const bytes = new Uint8Array(len);
-    
-        for (let i = 0; i < len; i++) {
-            bytes[i] = binaryString.charCodeAt(i);
-        }
-    
-        return bytes;
-    }
-
     const editDinner = (id: string) => {
       navigate(`/Dinners/edit/${id}`)
     }
@@ -83,7 +70,6 @@ const Dinners = () => {
                         <th>Type</th>
                         <th>Meat Type</th>
                         <th>Skill Level</th>
-                        <th>Ingredients</th>
                         <th>Tags</th>
                         <th>Image</th>
                         {showIdColumn && <th>Id</th>}
@@ -99,14 +85,13 @@ const Dinners = () => {
                     <td>{DinnerTypeLabels[dinner.type]}</td>
                     <td>{MeatTypeLabels[dinner.meatType]}</td>
                     <td>{SkillLevelLabels[dinner.skillLevel]}</td>
-                    <td>{dinner.ingredients.join(', ')}</td>
                     <td>{dinner.tags.join(', ')}</td>
                     <td>
                         {dinner.imageData ? (
                             <img
                                 src={`data:image/jpeg;base64,${byteArrayToBase64(stringToUint8Array(dinner.imageData))}`}
                                 alt={dinner.name}
-                                style={{ maxWidth: '100px' }}
+                                style={{ maxWidth: '100px', maxHeight: '180px', objectFit: 'cover'}}
                             />
                         ) : (
                             'No image'
@@ -114,10 +99,10 @@ const Dinners = () => {
                     </td>
                     {showIdColumn && <td>{dinner.id}</td>}
                     <td>
-                        <button onClick={() => editDinner(dinner.id)}>Edit dinner</button>
+                        <button onClick={() => editDinner(dinner.id)}>Edit</button>
                     </td>
                     <td>
-                        <button onClick={() => deleteDinner(dinner.id)}>Delete dinner</button>
+                        <button onClick={() => deleteDinner(dinner.id)}>Delete</button>
                     </td>
                 </tr>
                 ))}

@@ -25,14 +25,16 @@ const apiService = {
   },
 
   addDinner: async (dinner: CreateDinner) => {
-    const { name, description, type, meatType, skillLevel, ingredients, tags, imageData } = dinner;
+    const { name, description, type, meatType, skillLevel, ingredients, worthMakingLeftovers, notes, tags, imageData } = dinner;
     const response = await axios.post(`${API_BASE_URL}/Dinner/AddDinner`, { 
       name, 
       description, 
       type, 
       meatType, 
       skillLevel, 
-      ingredients, 
+      ingredients,
+      worthMakingLeftovers,
+      notes,
       tags, 
       imageData
      } ) 
@@ -43,7 +45,7 @@ const apiService = {
   },
 
   updateDinner: async (dinner: Dinner) => {
-    const { id, name, description, type, meatType, skillLevel, ingredients, tags, imageData } = dinner;
+    const { id, name, description, type, meatType, skillLevel, ingredients, worthMakingLeftovers, notes, tags, imageData } = dinner;
     console.log(dinner);
     const response = await axios.post(`${API_BASE_URL}/Dinner/EditDinner`, { 
       id,
@@ -53,6 +55,8 @@ const apiService = {
       meatType,
       skillLevel,
       ingredients,
+      worthMakingLeftovers,
+      notes,
       tags,
       imageData
      })

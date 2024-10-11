@@ -9,6 +9,8 @@ export interface Dinner {
     meatType: MeatType;
     skillLevel: SkillLevel;
     ingredients: string[];
+    worthMakingLeftovers: boolean;
+    notes: string;
     tags: string[];
     imageData: string | null;
 }
@@ -21,6 +23,8 @@ export interface CreateDinner {
     meatType: MeatType;
     skillLevel: SkillLevel;
     ingredients: string[];
+    worthMakingLeftovers: boolean;
+    notes: string;
     tags: string[];
     imageData: string | null;
 }
