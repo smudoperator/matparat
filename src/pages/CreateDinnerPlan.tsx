@@ -40,8 +40,6 @@ const CreateDinnerPlanPage: React.FC = () => {
       const result = await DinnerService.planDinners(formData);
       // Redirect to the DinnerPlanPage with the dinner plan data
 
-      // console.log("DinnerPlan result:", result); // Debug log
-
       navigate('/DinnerPlan', { state: result });
     } catch (error) {
       console.error('Error creating dinner plan:', error);

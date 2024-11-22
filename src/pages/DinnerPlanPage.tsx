@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Dinner } from '../types/interfaces';
 import DinnerCard from '../components/DinnerCard';
+import IngredientList from '../components/IngredientList';
 import { DayOfWeek, DayOfWeekLabels, EnumUtils  } from '../types/enums';
 
 const dayUtils = EnumUtils.of(DayOfWeek);
@@ -19,31 +20,37 @@ const dayUtils = EnumUtils.of(DayOfWeek);
         day = dayUtils.next(day);
     }
 
-    
-
     return weekdays;
   };
 
 const DinnerPlanPage: React.FC = () => {
     const location = useLocation();
-    console.log("Location state:", location.state);
+    const [showIngredients, setShowIngredients] = useState(false);
 
-    const dinnerPlan = location.state.result as { startDay: DayOfWeek; numberOfDays: number; dinners: Dinner[] };
+    const dinnerPlan = location.state.result as { startDay: DayOfWeek; numberOfDays: number; dinners: Dinner[]; shoppingList: string[] };
+    
+    const toggleIngredientsList = () => {
+        setShowIngredients((prev) => !prev);
+    };
 
     if (!dinnerPlan) {
         return <div>No dinner plan available.</div>;
     }
 
     const weekdays = createWeekdays(dinnerPlan.startDay, dinnerPlan.numberOfDays);
-    console.log("Testing startDay", dinnerPlan.startDay);
-    console.log("Testing num of days", dinnerPlan.numberOfDays);
 
-    console.log("Weekdays generated:", weekdays);
-    console.log("Dinners from backend:", dinnerPlan.dinners);
 
     return (
         <main className="container">
             <h1>Dinner Plan</h1>
+            <button className="shopping-list-button" onClick={toggleIngredientsList}>
+                {showIngredients ? 'Handleliste' : 'Handleliste'}
+            </button>
+            {showIngredients && (
+                <div className="ingredient-list-container">
+                    <IngredientList ingredients={dinnerPlan.shoppingList} />
+                </div>
+            )}
             {weekdays.map((day, index) => (
                 <div key={day} className="dinner-plan-container">
                     <h2>{DayOfWeekLabels[day]}</h2>

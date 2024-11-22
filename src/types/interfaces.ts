@@ -41,5 +41,6 @@ export interface CreateDinnerPlanRequest {
 export interface DinnerPlan {
     dinners: Dinner[],
     startDay: DayOfWeek,
-    numberOfDays: number
+    numberOfDays: number,
+    shoppingList: string[]
 }
