@@ -1,87 +1,115 @@
 /* I take no responsability for this auto-generated styling */
 
-
 /* Reset some basic elements to remove default margin/padding */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Set a global font family */
-  body {
-    font-family: 'Arial', sans-serif; /* Customize with your preferred font */
-    background-color: #ddf5e0; /* Set a global background color */
-    color: #383e37; /* Default text color */
-    line-height: 1.6; /* Improve readability */
-  }
-  
-  /* Make sure the main content area is centered and has some padding */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .form-group {
-    margin-bottom: 15px;
-  }
+@font-face {
+  font-family: "Gluten-Medium";
+  src: url("../fonts/Gluten-Medium.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 
-  .form-input {
-    margin: 15px;
-  }
+/* Set a global font family */
+body {
+  font-family: "Gluten-Medium", sans-serif; /* Customize with your preferred font */
+  background-color: #ddf5e0; /* Set a global background color */
+  color: #383e37; /* Default text color */
+  line-height: 1.6; /* Improve readability */
+}
 
-  .form-checkbox {
-    margin: 15px;
-  }
-  
-  /* Add some basic styling for headings */
-  h1, h2, h3, h4, h5, h6 {
-    color: #222;
-    margin-bottom: 10px;
-  }
-  
-  /* Links default styling */
-  a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Button styling */
-  button {
-    background-color: #fc7f6c;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #fbaa9e;
-  }
-  
-  /* Add a global padding or margin to sections if needed */
-  section {
-    padding: 40px 0;
-  }
+@font-face {
+  font-family: "Rakkas-Regular";
+  src: url("../fonts/Rakkas-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 
+/* Apply headline font */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Rakkas-Regular", sans-serif;
+}
 
-  /* COLORS */
+/* Make sure the main content area is centered and has some padding */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-  :root {
-    --primary-color: #0d4f21;
-    --primary-color-hover: #446a50;
-    --secondary-color: #fc7f6c;
-    --secondary-color-hover: #fbaa9e;
-    --background-color-light: #ddf5e0;
-    --background-color-dark: #839781;
-    --text-color-light: #ddf5e0;
-    --text-color-dark: #383e37;
-    --link-color: #1a7b44;
-    --link-hover-color: #166837;
-  }
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-input {
+  margin: 15px;
+}
+
+.form-checkbox {
+  margin: 15px;
+}
+
+/* Add some basic styling for headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #222;
+  margin-bottom: 10px;
+}
+
+/* Links default styling */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Button styling */
+button {
+  background-color: #fc7f6c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Rakkas-Regular;
+}
+
+button:hover {
+  background-color: #fbaa9e;
+}
+
+/* Add a global padding or margin to sections if needed */
+section {
+  padding: 40px 0;
+}
+
+/* COLORS */
+
+:root {
+  --primary-color: #0d4f21;
+  --primary-color-hover: #446a50;
+  --secondary-color: #fc7f6c;
+  --secondary-color-hover: #fbaa9e;
+  --background-color-light: #ddf5e0;
+  --background-color-dark: #839781;
+  --text-color-light: #ddf5e0;
+  --text-color-dark: #383e37;
+  --link-color: #1a7b44;
+  --link-hover-color: #166837;
+}

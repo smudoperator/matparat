@@ -1,25 +1,28 @@
 /* src/components/Navbar.css */
-  
- /* Base styles for the navbar */
+
+/* Base styles for the navbar */
 .navbar {
   background-color: var(--primary-color);
   padding: 10px;
+  position: relative;
   z-index: 999;
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* This will vertically center everything in the container */
-  height: 60px; /* Make sure the height is set */
+  align-items: center;
+  height: 60px;
   padding: 10px;
   z-index: 999;
 }
 
 .navbar-links {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   list-style: none;
+  font-size: 2.5rem;
+  font-family: Rakkas-Regular;
 }
 
 .navbar-links a {
@@ -28,19 +31,26 @@
 }
 
 .navbar-links a:hover {
-  background-color: var(--link-color);
+  text-decoration: underline;
+  text-decoration-color: var(--text-color-light);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 2px;
 }
 
 /* Logo and brand */
 .navbar-brand {
   display: flex;
   align-items: center;
+  font-family: Rakkas-Regular;
+  font-size: 3rem;
+  color: var(--text-color-light);
 }
 
-.brand-logo, .brand-text {
+.brand-logo,
+.brand-text {
   height: 50px;
 }
 
 .brand-text {
-  filter: invert(1);
+  margin-top: 15px;
 }

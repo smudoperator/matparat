@@ -1,63 +1,54 @@
 /* Container for the Dinners page */
 .container {
-    padding: 20px;
+  padding: 5px;
 }
 
 /* Button for toggling column visibility */
 .columnToggle {
-    background-color: #0d4f21; /* Primary color */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    cursor: pointer;
-    margin: 20px;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+  background-color: #0d4f21; /* Primary color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin: 20px 10px 20px 20px; /* Combined margins */
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .columnToggle:hover {
-    background-color: #1a7b44; /* Hover effect */
+  background-color: #1a7b44; /* Hover effect */
 }
 
 /* Table styling */
-.table {
-    width: 100%;
-    border-collapse: separate; /* Ensure borders are displayed between cells */
-    border-spacing: 0; /* Remove default spacing */
-    margin: 20px 0;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-/* Table header styling */
-.table thead th {
-    background-color: #f8f9fa; /* Light gray background */
-    padding: 15px; /* Increase padding for more spacing */
-    text-align: left;
-    border-bottom: 2px solid #dee2e6;
-    border-right: 1px solid #dee2e6; /* Add right border for separation */
+th,
+td {
+  border: 1px solid #ddf5e0; /* Unified border color */
+  padding: 15px; /* Standardized padding */
+  text-align: left;
 }
 
-/* Table row styling */
-.table tbody tr:nth-child(even) {
-    background-color: #f2f2f2; /* Alternate row background */
+th {
+  background-color: var(--background-color-light);
+  font-weight: bold;
 }
 
-.table tbody tr:hover {
-    background-color: #e9ecef; /* Highlight row on hover */
+/* Alternating row colors */
+tbody tr:nth-child(odd) {
+  background-color: #ddf5e0;
 }
 
-/* Table cell styling */
-.table td, .table th {
-    padding: 15px; /* Increase padding for more spacing */
-    border: 1px solid #0c75de; /* Add border to each cell */
-}
-
-/* Styling for active columns (optional) */
-.active {
-    background-color: #d3d3d3; /* Light gray background for active column */
+tbody tr:nth-child(even) {
+  background-color: rgb(195, 219, 198);
 }
 
 /* Styling for hidden columns */
 .hidden {
-    display: none;
+  display: none;
 }
