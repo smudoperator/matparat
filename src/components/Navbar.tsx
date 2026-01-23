@@ -2,7 +2,7 @@
 
 import { Link } from "react-router-dom";
 import "./Navbar.css"; // General navbar styles
-import logoText from "../assets/matpirat-text.png";
+import logoText from "../assets/MatPirat-text.png";
 import logoImage from "../assets/MatPirat-logo.png";
 import NavbarMobile from "./NavbarMobile";
 
