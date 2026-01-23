@@ -14,10 +14,10 @@ const Navbar = () => {
         <NavbarMobile />
 
         {/* Logo and text */}
-        <div className="navbar-brand">
+        <Link to="/" className="navbar-brand">
           <img src={logoText} className="brand-text" alt="text-logo" />
           <img src={logoImage} className="brand-logo" alt="logo" />
-        </div>
+        </Link>
 
         {/* Regular links (hidden on mobile) */}
         <ul className="navbar-links">

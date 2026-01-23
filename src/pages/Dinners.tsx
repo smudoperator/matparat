@@ -49,12 +49,12 @@ const Dinners = () => {
   const deleteDinner = async (id: string) => {
     try {
       const confirmed = window.confirm(
-        "Are you sure you want to delete this dinner?"
+        "Are you sure you want to delete this dinner?",
       );
       if (confirmed) {
         await dinnerService.deleteDinner(id);
         setDinners((prevDinners) =>
-          prevDinners.filter((dinner) => dinner.id !== id)
+          prevDinners.filter((dinner) => dinner.id !== id),
         ); // Update local state
       }
     } catch (err) {
@@ -62,7 +62,20 @@ const Dinners = () => {
     }
   };
 
-  if (loading) return <p>Loading... the api is eepy sleepy</p>;
+  if (loading)
+    return (
+      <p
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          fontSize: "1.5rem",
+        }}
+      >
+        Loading... the api is eepy sleepy
+      </p>
+    );
   if (error) return <p>{error}</p>;
 
   return (
@@ -102,13 +115,14 @@ const Dinners = () => {
                 {dinner.imageData ? (
                   <img
                     src={`data:image/jpeg;base64,${byteArrayToBase64(
-                      stringToUint8Array(dinner.imageData)
+                      stringToUint8Array(dinner.imageData),
                     )}`}
                     alt={dinner.name}
                     style={{
-                      maxWidth: "100px",
-                      maxHeight: "180px",
+                      width: "100px",
+                      height: "100px",
                       objectFit: "cover",
+                      objectPosition: "center",
                     }}
                   />
                 ) : (

@@ -1,9 +1,10 @@
 // src/pages/CreateDinnerPlan.tsx
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import DinnerService from '../services/DinnerService'; // Adjust the path as necessary
-import { CreateDinnerPlanRequest, DinnerPlan } from '../types/interfaces';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import DinnerService from "../services/DinnerService";
+import { CreateDinnerPlanRequest, DinnerPlan } from "../types/interfaces";
+import styles from "./CreateDinnerPlan.module.css";
 
 const CreateDinnerPlanPage: React.FC = () => {
   // State to store form data
@@ -11,7 +12,7 @@ const CreateDinnerPlanPage: React.FC = () => {
     tacoFriday: false,
     startDay: 1, // Default to Monday
     numberOfDays: 7,
-    numberOfFish: 1
+    numberOfFish: 1,
   });
 
   const navigate = useNavigate();
@@ -20,16 +21,21 @@ const CreateDinnerPlanPage: React.FC = () => {
   const [dinnerPlan, setDinnerPlan] = useState<DinnerPlan | null>(null);
 
   // Handle form input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     const { name, value, type, checked } = e.target as HTMLInputElement;
-    
-    const newValue = type === 'checkbox' ? (checked as boolean)
-                    : name === 'startDay' ? Number(value) 
-                    : value; 
-  
+
+    const newValue =
+      type === "checkbox"
+        ? (checked as boolean)
+        : name === "startDay"
+          ? Number(value)
+          : value;
+
     setFormData({
       ...formData,
-      [name]: newValue
+      [name]: newValue,
     });
   };
 
@@ -40,29 +46,35 @@ const CreateDinnerPlanPage: React.FC = () => {
       const result = await DinnerService.planDinners(formData);
       // Redirect to the DinnerPlanPage with the dinner plan data
 
-      navigate('/DinnerPlan', { state: result });
+      navigate("/DinnerPlan", { state: result });
     } catch (error) {
-      console.error('Error creating dinner plan:', error);
+      console.error("Error creating dinner plan:", error);
     }
   };
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       <h1>Fyr inn noe her så blir det bra</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Taco Fredag?:
-          <input className="form-checkbox"
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.checkboxGroup}>
+          <label htmlFor="tacoFriday">Taco Fredag?</label>
+          <input
             type="checkbox"
+            id="tacoFriday"
             name="tacoFriday"
             checked={formData.tacoFriday}
             onChange={handleChange}
           />
-        </label>
-        <div className="form-group">
-        <label>
-          Velg dag planen skal starte på:
-          <select name="startDay" value={formData.startDay} onChange={handleChange}>
+        </div>
+
+        <div className={styles.formGroup}>
+          <label htmlFor="startDay">Velg dag planen skal starte på:</label>
+          <select
+            name="startDay"
+            id="startDay"
+            value={formData.startDay}
+            onChange={handleChange}
+          >
             <option value={0}>Søndag</option>
             <option value={1}>Mandag</option>
             <option value={2}>Tirsdag</option>
@@ -71,30 +83,41 @@ const CreateDinnerPlanPage: React.FC = () => {
             <option value={5}>Fredag</option>
             <option value={6}>Lørdag</option>
           </select>
-        </label>
         </div>
-        
-        <label>
-          Hvor lenge skal planen vare?
-          <input className="form-input"
+
+        <div className={styles.formGroup}>
+          <label htmlFor="numberOfDays">Hvor lenge skal planen vare?</label>
+          <input
+            className={styles.numberInput}
             type="number"
+            id="numberOfDays"
             name="numberOfDays"
             value={formData.numberOfDays}
             onChange={handleChange}
             min="1"
           />
-        </label>
-        <label>
-          Btw, how much is the fish?
-          <input className="form-input"
+          <p className={styles.helperText}>
+            Antall dager planen skal gjelde for
+          </p>
+        </div>
+
+        <div className={styles.formGroup}>
+          <label htmlFor="numberOfFish">Btw, how much is the fish?</label>
+          <input
+            className={styles.numberInput}
             type="number"
+            id="numberOfFish"
             name="numberOfFish"
             value={formData.numberOfFish}
             onChange={handleChange}
             min="0"
           />
-        </label>
-        <button type="submit">Plan Dinners</button>
+          <p className={styles.helperText}>Antall fiskemåltider i uken</p>
+        </div>
+
+        <button type="submit" className={styles.submitButton}>
+          Plan Dinners
+        </button>
       </form>
     </div>
   );
