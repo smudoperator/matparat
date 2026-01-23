@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DinnerService from "../services/DinnerService";
-import { CreateDinnerPlanRequest, DinnerPlan } from "../types/interfaces";
+import { CreateDinnerPlanRequest } from "../types/interfaces";
 import styles from "./CreateDinnerPlan.module.css";
 
 const CreateDinnerPlanPage: React.FC = () => {
@@ -16,9 +16,6 @@ const CreateDinnerPlanPage: React.FC = () => {
   });
 
   const navigate = useNavigate();
-
-  // State to store the result of the DinnerPlan
-  const [dinnerPlan, setDinnerPlan] = useState<DinnerPlan | null>(null);
 
   // Handle form input changes
   const handleChange = (

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import apiService from "../services/DinnerService"; // Adjust the path if needed
-import { CreateDinner, Dinner } from "../types/interfaces";
-import { DinnerType, MeatType, SkillLevel } from "../types/enums"; // Adjust the path if needed
-import styles from "./AddDinner.module.css"; // Import the CSS module for styling
+import apiService from "../services/DinnerService";
+import { CreateDinner } from "../types/interfaces";
+import { DinnerType, MeatType, SkillLevel } from "../types/enums";
+import styles from "./AddDinner.module.css";
 
 const AddDinnerPage = () => {
   const [name, setName] = useState("");
