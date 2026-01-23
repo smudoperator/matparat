@@ -12,7 +12,7 @@ import DinnerPlanPage from './pages/DinnerPlanPage';
 
 function App() {
   return (
-    <Router basename="/matparat">
+    <Router>
       <div>
         <Navbar />
         <Routes>
@@ -21,7 +21,7 @@ function App() {
           <Route path="/Dinners/edit/:id" element={<EditDinner />} />
           <Route path="/AddDinner" element={<AddDinner />} />
           <Route path="/CreateDinnerPlan" element={<CreateDinnerPlan />} />
-          <Route path="/DinnerPlan" element={<DinnerPlanPage />} /> 
+          <Route path="/DinnerPlan" element={<DinnerPlanPage />} />
         </Routes>
       </div>
     </Router>
