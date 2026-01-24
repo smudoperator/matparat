@@ -23,11 +23,6 @@ const Home: React.FC = () => {
     navigate("/CreateDinnerPlan");
   };
 
-  const handleSignUp = () => {
-    // For now, just navigate to the dinners page
-    navigate("/Dinners");
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.homeContent}>
@@ -39,37 +34,6 @@ const Home: React.FC = () => {
         <button className={styles.button} onClick={planDinners}>
           Kjør
         </button>
-
-        {/* Promotional Section */}
-        <div className={styles.promoSection}>
-          <div className={styles.promoBadge}>Limited Time Offer!</div>
-          <h2>Sign Up Now for a FREE 3-Week Dinner Plan!</h2>
-          <p>
-            Get personalized dinner plans tailored to your preferences. No
-            credit card required!
-          </p>
-          <div className={styles.promoFeatures}>
-            <div className={styles.promoFeature}>
-              <span className={styles.promoFeatureIcon}>✓</span>
-              <span>21 customized dinner recipes</span>
-            </div>
-            <div className={styles.promoFeature}>
-              <span className={styles.promoFeatureIcon}>✓</span>
-              <span>Automated shopping lists</span>
-            </div>
-            <div className={styles.promoFeature}>
-              <span className={styles.promoFeatureIcon}>✓</span>
-              <span>Nutritional information included</span>
-            </div>
-            <div className={styles.promoFeature}>
-              <span className={styles.promoFeatureIcon}>✓</span>
-              <span>Leftover planning tips</span>
-            </div>
-          </div>
-          <button className={styles.promoButton} onClick={handleSignUp}>
-            Get My Free Plan
-          </button>
-        </div>
       </div>
     </div>
   );
