@@ -38,29 +38,29 @@ const Dinners = () => {
     setShowIdColumn(!showIdColumn);
   };
 
-  const editDinner = (id: string) => {
-    navigate(`/Dinners/edit/${id}`);
-  };
+  // const editDinner = (id: string) => {
+  //   navigate(`/Dinners/edit/${id}`);
+  // };
 
   const addDinner = () => {
     navigate(`/addDinner`);
   };
 
-  const deleteDinner = async (id: string) => {
-    try {
-      const confirmed = window.confirm(
-        "Are you sure you want to delete this dinner?",
-      );
-      if (confirmed) {
-        await dinnerService.deleteDinner(id);
-        setDinners((prevDinners) =>
-          prevDinners.filter((dinner) => dinner.id !== id),
-        ); // Update local state
-      }
-    } catch (err) {
-      setError("Failed to delete dinner.");
-    }
-  };
+  // const deleteDinner = async (id: string) => {
+  //   try {
+  //     const confirmed = window.confirm(
+  //       "Are you sure you want to delete this dinner?",
+  //     );
+  //     if (confirmed) {
+  //       await dinnerService.deleteDinner(id);
+  //       setDinners((prevDinners) =>
+  //         prevDinners.filter((dinner) => dinner.id !== id),
+  //       ); // Update local state
+  //     }
+  //   } catch (err) {
+  //     setError("Failed to delete dinner.");
+  //   }
+  // };
 
   if (loading)
     return (
