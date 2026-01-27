@@ -130,14 +130,14 @@ const Dinners = () => {
                 )}
               </td>
               {showIdColumn && <td>{dinner.id}</td>}
-              <td>
+              {/* <td>
                 <button onClick={() => editDinner(dinner.id)}>endre</button>
-              </td>
-              <td>
+              </td> */}
+              {/* <td>
                 <button onClick={() => deleteDinner(dinner.id)}>
                   destruer
                 </button>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody>
